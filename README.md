@@ -1,2 +1,0 @@
-# GoToCSharp
- Start learning C#
