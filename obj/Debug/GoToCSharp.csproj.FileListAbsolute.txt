@@ -1,0 +1,7 @@
+C:\Users\alexd\source\repos\C#\GoToCSharp\bin\Debug\GoToCSharp.exe.config
+C:\Users\alexd\source\repos\C#\GoToCSharp\bin\Debug\GoToCSharp.exe
+C:\Users\alexd\source\repos\C#\GoToCSharp\bin\Debug\GoToCSharp.pdb
+C:\Users\alexd\source\repos\C#\GoToCSharp\obj\Debug\GoToCSharp.csproj.AssemblyReference.cache
+C:\Users\alexd\source\repos\C#\GoToCSharp\obj\Debug\GoToCSharp.csproj.CoreCompileInputs.cache
+C:\Users\alexd\source\repos\C#\GoToCSharp\obj\Debug\GoToCSharp.exe
+C:\Users\alexd\source\repos\C#\GoToCSharp\obj\Debug\GoToCSharp.pdb
