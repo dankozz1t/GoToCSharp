@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +12,111 @@ namespace GoToCSharp
     {
         static void Main(string[] args)
         {
-            Console.WindowHeight = 25;
-            Console.WindowWidth = 80;
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Yellow;
 
-            //Console.BackgroundColor = ConsoleColor.DarkGray;
-            //Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Title = "Start learning CSharp";
+
+            Main22_09();
+
+        }
+
+        static bool greter3(int a)
+        {
+            return a > 30;
+        }
+        static void Main22_09()
+        {
+            Console.WriteLine("New Main 22 09 20021");
+
+            const int sizeArr = 5;
+
+            int[] arr = new int[sizeArr] { 1, 2, 3, 4, 5 };
+
+            int[] arr2 = new int[sizeArr];
+
+            arr.CopyTo(arr2, 0); //Копирование ар1 в ар2 
+
+            Console.WriteLine(arr2.GetValue(3));
+
+            Console.WriteLine(Array.FindAll(arr2, greter3).ToArray());
+
+            for (int i = 0; i < sizeArr; i++)
+            {
+                Console.WriteLine();
+                Console.Write(arr[i] + " ");
+
+                Console.Write(arr2[i] + " ");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(" ========= ");
+
+            int[,] array2D = new int[,] { { 1, 2, 3 }, { 4, 5, 6 } }; //Двухмерный массив, инц, вывод
+            Console.WriteLine(array2D.Rank);
+            Console.WriteLine(array2D.Length);
+
+
+            for (int i = 0; i < array2D.GetLength(0); i++)
+            {
+                for (int j = 0; j < array2D.GetLength(1); j++)
+                {
+                    Console.Write("{0,3}", array2D[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            int[][] arrArr = new int[2][] { new int[5] { 1, 2, 3, 4, 5 }, new int[3] { 1, 3, 4 } }; //Зубчатый массив, инц, вывод
+
+            for (int i = 0; i < arrArr.GetLength(0); i++)
+            {
+                foreach (var item in arrArr[i])
+                {
+                    Console.WriteLine(item + " ");
+                }
+
+                Console.WriteLine();
+            }
+
+
+            string st = " jejeje.jejedje";
+            string st1 = new string('$', 10);
+
+
+            Console.WriteLine("Строка {st} Заканчиавается на е: " + st.EndsWith("e"));
+            Console.WriteLine("Строка {st} Начинается на е:" + st.StartsWith("e"));
+
+            Console.WriteLine("Форматирование влево на 20 (setw(20)): " + st.PadLeft(20));
+
+            string[] str2 = st.Split('d', '.').ToArray(); //Разделяет строку от ''
+
+            foreach (var item in str2)
+            {
+                Console.WriteLine(item);   
+            }
+
+            Console.WriteLine("Удаляет все начальные и конечные символы " + st.Trim(" ".ToCharArray()));
+
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" hello");
+
+            Console.WriteLine(sb);
+
+
+
+            Console.Read();
+        }
+
+        static void Main21_09()
+        {
+            //Console.WindowHeight = 25;
+            //Console.WindowWidth = 80;
+
+
             //Console.Clear();
             //Console.Beep(1000, 1000);
-            Console.Title = "Start learning CSharp";
+
 
             //Console.WriteLine("Введите а: ");
             ////int a = Convert.ToInt32(Console.ReadLine()); // 
@@ -55,32 +153,38 @@ namespace GoToCSharp
             //}
 
 
-            int d = 5 > 4 ? 2 : 6; //Условный оператор
+            //int d = 5 > 4 ? 2 : 6; //Условный оператор
 
 
-            int[] arr = new int[10];
-            Random rns = new Random();
-            for (int i = 0; i < 10; i++)
-            {
-                arr[i] = rns.Next(10,80);
-                Console.Write(arr[i] + " ");
-            }
-            Console.WriteLine();
+            //int[] arr = new int[10];
+            //Random rns = new Random();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    arr[i] = rns.Next(10,80);
+            //    Console.Write(arr[i] + " ");
+            //}
+            //Console.WriteLine();
 
-            int count = 0;
+            //int count = 0;
 
-            foreach (var item in arr)
-            {
-                if (item % 2 == 0)
-                    count++;
-            }
+            //foreach (var item in arr)
+            //{
+            //    if (item % 2 == 0)
+            //        count++;
+            //}
 
-            Console.WriteLine($"Count = {count}");
-
-        
+            //Console.WriteLine($"Count = {count}");
 
 
-            Console.Read();
+            //double number2 = double.Parse("34.42"); // Зависит от настроек операционной системы
+
+            ////Следующий вызов не зависит от настроек и всегда ожидает точку в качестве разделителя:
+            //number2 = double.Parse("34.42", CultureInfo.InvariantCulture);
+
+
+
+            //Console.Read();
         }
+
     }
 }
