@@ -8,16 +8,20 @@ using System.Threading.Tasks;
 
 namespace GoToCSharp
 {
+
     class Program
     {
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.ForegroundColor = ConsoleColor.Yellow;
-
             Console.Title = "Start learning CSharp";
 
-            Main22_09();
+            DzWeek1_1 dz = new DzWeek1_1();
+            dz.startMenu();
+
+
+            //Main22_09();
 
         }
 
@@ -92,7 +96,7 @@ namespace GoToCSharp
 
             foreach (var item in str2)
             {
-                Console.WriteLine(item);   
+                Console.WriteLine(item);
             }
 
             Console.WriteLine("Удаляет все начальные и конечные символы " + st.Trim(" ".ToCharArray()));
