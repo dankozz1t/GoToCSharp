@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 
 namespace GoToCSharp
 {
+    internal class Student
+    {
+
+    }
+
 
     class Program
     {
