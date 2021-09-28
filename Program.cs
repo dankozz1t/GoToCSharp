@@ -8,11 +8,55 @@ using System.Threading.Tasks;
 
 namespace GoToCSharp
 {
-    internal class Student
+    public class A
     {
-
+        public void MethodA(B obj)
+        {
+            obj.MethodB(this);
+        }
     }
 
+    public class B
+    {
+        public void MethodB(A obj)
+        {
+            Console.WriteLine($"Class - {obj.GetType().Name}");
+        }
+    }
+
+
+    public partial class Student
+    {
+        private int salary;
+        public int Salary
+        {
+            get { return salary; }
+            set
+            {
+                if (salary > 0)
+                    salary = value;
+                else
+                    Console.WriteLine("Исключение, зп меньше 0");
+            }
+        }
+        private int age;
+        public int Age
+        {
+            get { return age; }
+            set { age = value > 1 && value < 100 ? value : 0;  }
+        }
+        public int sex { get; set; }
+        public string GroupName { get; set; } = "201";
+        public string Name { get; set; }
+        public DateTime BirthDay { get; set; }
+
+        public void Print()
+        {
+            Console.WriteLine($" Name: {Name},\n Age: {Age},\n GroupName: {GroupName},\n Sex = {sex},\n BDay = {BirthDay}");
+            Console.WriteLine();
+        }
+
+    }
 
     class Program
     {
@@ -22,13 +66,68 @@ namespace GoToCSharp
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Title = "Start learning CSharp";
 
-            DzWeek1_1 dz = new DzWeek1_1();
-            dz.startMenu();
+            //Console.WriteLine(Sum(1, 2, 3));
 
+            //int aA = 0;
+            //int b = 0;
+            //int[] arr = {1, 2, 3};
+            //FuncM(ref arr, ref aA, out b); //ref - меняет как ссылка в плюсах    //out - ТОчно должна изменить
+            //    //Разница в том что параметру ref и out. ref =  Не обьязательно существовать
+
+            //Console.WriteLine($"Aa = {aA}, Arr[0] = {arr[0]}, b = {b} ");
+
+            //B b = new B();
+            //A a = new A();
+            //a.MethodA(b);
+            //b.MethodB(a);
+
+
+            Student student = new Student
+            {
+                Name = "Name",
+                Age = 16,
+                GroupName = "2340",
+                Salary = 2333,
+                sex = 0,
+                BirthDay = new DateTime(2000,5,20),
+
+            };
+            student.Print();
+
+            Console.WriteLine(student.Salary);
+            //Student student2 = new Student("Alex", 18);
+            //student2.Print();
+
+            //Console.WriteLine(student2.GetAge()); //Из разбивки файла
+
+            //student.Salary = 1000;
+            //Console.WriteLine(student.Salary);
+
+            Console.Read();
 
             //Main22_09();
 
         }
+
+        static void FuncM(ref int[] arr, ref int a, out int b)
+        {
+            arr = new int[] { 100, 200, 300 };
+            a = 1000;
+            b = 9900;
+        }
+
+        static int Sum(params int[] arr) //Разное количество параметром //params указывает на массив любого типа ( То есть с ним не нужно создавать обьект, а сразу параметры)
+        {
+            int suma = 0;
+            foreach (var item in arr)
+            {
+                suma += item;
+            }
+            return suma;
+        }
+
+
+        //-----------------------------
 
         static bool greter3(int a)
         {
