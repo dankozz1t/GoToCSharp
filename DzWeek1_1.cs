@@ -27,8 +27,8 @@ namespace GoToCSharp
             while (task != 6)
             {
                 Console.Write("\nВведите задание: № ");
-                string taskS = Console.ReadLine();
-                task = Int32.Parse(taskS);
+
+                task = Int32.Parse(Console.ReadLine());
 
                 switch (task)
                 {
