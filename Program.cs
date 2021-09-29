@@ -60,7 +60,89 @@ namespace GoToCSharp
 
     class Program
     {
-        static void Main(string[] args)
+        //static void Main(string[] args)
+        //{
+        //    Console.BackgroundColor = ConsoleColor.DarkGray;
+        //    Console.ForegroundColor = ConsoleColor.Yellow;
+        //    Console.Title = "Start learning CSharp";
+
+        //    Main29_09();
+
+
+        //    Console.Read();
+        //}
+
+        static void Main29_09()
+        {
+
+            //----------------------------------VECTOR 
+            //Point p = new Point();
+            //p.X = 1;
+            //p.Y = 2;
+            //p.Y -= p.X;
+            //Console.WriteLine(-p);
+
+            //Vector v1 = new Vector(new Point() { X = 2, Y = 4 }, new Point() { X = 5, Y = 8 });
+            //Vector v2 = new Vector(new Point() { X = 5, Y = 6 }, new Point() { X = 8, Y = 9 });
+            //Console.WriteLine($" V1 = {v1}");
+            //Console.WriteLine($" V2 = {v2}");
+
+            //Vector v3 = v1 + v2;
+            //Console.WriteLine($" V3 = {v3}");
+
+            //Console.WriteLine($" V3 = {v3 = v2 * 4}");
+
+            //Vector v4 = v3;
+            //if(v4 == v3)
+            //    Console.WriteLine($" v4 = {v4} |   ==   |v3 = {v3} ");
+
+            //double d = v1;
+            //Console.WriteLine($" V1 = {d}");
+            //----------------------------------VECTOR ^
+
+            //----------------------------------SHOP
+            //Shop shop = new Shop(3);
+            //shop[0] = new Product { Name = "TV", Price = 500 };
+            //shop[1] = new Product { Name = "Apple", Price = 20 };
+            //shop[2] = new Product { Name = "Meme", Price = 100 };
+
+            //try
+            //{
+            //    for (int i = 0; i < shop.Length; i++)
+            //    {
+            //        Console.WriteLine(shop[i]);
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //    throw;
+            //}
+
+            //shop["Apple"] = 101;
+            //Console.WriteLine($"{shop[1]}");
+            //----------------------------------SHOP ^
+
+
+            //----------------------------------Matrix 
+            //Matrix matrix = new Matrix(3, 4);
+            //Random rnd = new Random();
+            //for (int i = 0; i < matrix.Row; i++, Console.WriteLine())
+            //{
+            //    for (int j = 0; j < matrix.Col; j++)
+            //    {
+            //        matrix[i, j] = rnd.Next(10);
+            //        Console.Write($"{matrix[i,j]} ");
+            //    }
+            //}
+            //----------------------------------Matrix ^
+
+
+
+        }
+
+        static void Main28_09()
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -89,7 +171,7 @@ namespace GoToCSharp
                 GroupName = "2340",
                 Salary = 2333,
                 sex = 0,
-                BirthDay = new DateTime(2000,5,20),
+                BirthDay = new DateTime(2000, 5, 20),
 
             };
             student.Print();
@@ -104,8 +186,6 @@ namespace GoToCSharp
             //Console.WriteLine(student.Salary);
 
             Console.Read();
-
-            //Main22_09();
 
         }
 
