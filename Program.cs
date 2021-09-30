@@ -43,7 +43,7 @@ namespace GoToCSharp
         public int Age
         {
             get { return age; }
-            set { age = value > 1 && value < 100 ? value : 0;  }
+            set { age = value > 1 && value < 100 ? value : 0; }
         }
         public int sex { get; set; }
         public string GroupName { get; set; } = "201";
@@ -60,17 +60,68 @@ namespace GoToCSharp
 
     class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    Console.BackgroundColor = ConsoleColor.DarkGray;
-        //    Console.ForegroundColor = ConsoleColor.Yellow;
-        //    Console.Title = "Start learning CSharp";
+        static void Main(string[] args)
+        {
+            //Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Title = "Start learning CSharp";
 
-        //    Main29_09();
+            Main30_09();
 
 
-        //    Console.Read();
-        //}
+            Console.Read();
+        }
+
+        static void Main30_09()
+        {
+            //Employee emp1 = new Employee("Алекс", "Данько", new DateTime(2000, 02, 12), 800);
+            //emp1.Print();
+            //Console.WriteLine(" ");
+
+            //Manager man1 = new Manager("Виктория", "Степанова", new DateTime(1973, 08, 1), 1500, 7);
+            //man1.PrintManager();
+            //Console.WriteLine(" ");
+
+            //Specialist specialist1 = new Specialist("Семен", "Аниме", new DateTime(2007, 03, 8), 100, "Мидл пайтон");
+            //specialist1.PrintSpecialist();
+            //Console.WriteLine(" ");
+
+            //Marketer marketer1 = new Marketer("Марк", "Маркович", new DateTime(1998, 06, 24), 5000, 19188);
+            //marketer1.PrintMarketer();
+
+            Employee[] employees = {
+                new Specialist("Семен", "Аниме", new DateTime(2007, 03, 8), 100, "Мидл пайтон"),
+                new Manager("Виктория", "Степанова", new DateTime(1973, 08, 1), 1500, 7),
+                new Marketer("Марк", "Маркович", new DateTime(1998, 06, 24), 5000, 19188)
+            };
+
+            foreach (var item in employees)
+            {
+                item.Print();
+                //-----------------------------
+                //try
+                //{
+                //    ((Specialist)item).PrintSpecialist();
+                //}
+                //catch { }
+
+                ////---------------------------
+                //Manager manager = item as Manager;
+                //if (manager != null)
+                //    manager.PrintManager();
+
+
+                ////---------------------------
+                //if (item is Marketer)
+                //    (item as Marketer).PrintMarketer();
+
+                Console.WriteLine(" ");
+
+            }
+
+
+        }
+
 
         static void Main29_09()
         {

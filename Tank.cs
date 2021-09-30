@@ -7,35 +7,35 @@ namespace GoToCSharp
 
         //РЕЗУЛЬТАТ КОМПИЛЯЦИИ (ДЕМОНСТРАЦИЯ) В //resources//TaskTanks
 
-        static void Main(string[] args)
-        {
-            Console.Title = "TANKS";
+        //static void Main(string[] args)
+        //{
+        //    Console.Title = "TANKS";
 
-            int NumberOfTanks = 5;
+        //    int NumberOfTanks = 5;
 
-            for (int i = 0; i < NumberOfTanks; i++)
-            {
-                Tank tank1 = new Tank(" Т-34  ");
-                Tank tank2 = new Tank("Pantera");
+        //    for (int i = 0; i < NumberOfTanks; i++)
+        //    {
+        //        Tank tank1 = new Tank(" Т-34  ");
+        //        Tank tank2 = new Tank("Pantera");
 
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\n -{tank1.Name} VS   {tank2.Name}");
+        //        Console.ForegroundColor = ConsoleColor.Red;
+        //        Console.WriteLine($"\n -{tank1.Name} VS   {tank2.Name}");
 
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($" {tank1} \n { tank2}");
+        //        Console.ForegroundColor = ConsoleColor.Yellow;
+        //        Console.WriteLine($" {tank1} \n { tank2}");
 
-                Console.ForegroundColor = ConsoleColor.Green;
-                if (tank1 * tank2 == 1)
-                    Console.WriteLine($" -ПОБЕДА = {tank1.Name} ");
+        //        Console.ForegroundColor = ConsoleColor.Green;
+        //        if (tank1 * tank2 == 1)
+        //            Console.WriteLine($" -ПОБЕДА = {tank1.Name} ");
 
-                else if (tank1 * tank2 == 2)
-                    Console.WriteLine($" -ПОБЕДА = {tank2.Name} ");
+        //        else if (tank1 * tank2 == 2)
+        //            Console.WriteLine($" -ПОБЕДА = {tank2.Name} ");
 
-                else
-                    Console.WriteLine(" -НИЧЬЯ ");
-            }
-            Console.Read();
-        }
+        //        else
+        //            Console.WriteLine(" -НИЧЬЯ ");
+        //    }
+        //    Console.Read();
+        //}
 
         private static Random rnd = new Random();
         public string Name;

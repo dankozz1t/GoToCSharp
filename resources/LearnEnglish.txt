@@ -1,2 +1,4 @@
 ﻿explicit - явное 
 implicit - Неявное 
+employee - сотрудник
+sealand - печать
