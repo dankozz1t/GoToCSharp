@@ -51,10 +51,10 @@ namespace GoToCSharp
 
             //int space = 0, point = 0;
             //Console.Write("Введите предложение ( точка = конец ): ");
-            //while (point != (int)Key.Point)
+            //while (point != 32)
             //{
             //    point = Console.Read();
-            //    if (point == (int)Key.Space)
+            //    if (point == 46)
             //        space++;
             //}
             //Console.WriteLine($"Всего {space} пробелов");
