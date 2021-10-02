@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="DzWeek1_2 Apple\Apple.cs" />
     <Compile Include="DzWeek1_2 Apple\AppleAddSugar.cs" />
+    <Compile Include="DzWeek3 House\House.cs" />
     <Compile Include="Inheritance.cs" />
     <Compile Include="StudentGetAge.cs" />
     <Compile Include="DzWeek1_1\DzWeek1_1.cs" />
