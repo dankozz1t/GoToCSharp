@@ -60,17 +60,17 @@ namespace GoToCSharp
 
     class Program
     {
-        static void Main(string[] args)
-        {
-            //Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Title = "Start learning CSharp";
+        //static void Main(string[] args)
+        //{
+        //    //Console.BackgroundColor = ConsoleColor.DarkGray;
+        //    Console.ForegroundColor = ConsoleColor.Yellow;
+        //    Console.Title = "Start learning CSharp";
 
-            Main30_09();
+        //    Main30_09();
 
 
-            Console.Read();
-        }
+        //    Console.Read();
+        //}
 
         static void Main30_09()
         {

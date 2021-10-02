@@ -2,3 +2,6 @@
 implicit - Неявное 
 employee - сотрудник
 sealand - печать
+freshness - свежесть
+whole - целостность
+taste - вкус
