@@ -32,9 +32,9 @@ namespace GoToCSharp
             Console.Title = "DZ_Week1_2";
 
             Apple[] apples = {
-                new Apple("Красный принц", "Красный", "Горький", 8, 10),
-                new Apple("Райское", "Зеленый", "Кислый", 6, 10),
-                new Apple("Домашнее", "Красно-Желтое", "Сладкий", 10, 8),
+                new Apple("Красный принц", "Красное", "Горькое", 8, 10),
+                new Apple("Райское", "Зеленое", "Кислое", 6, 10),
+                new Apple("Домашнее", "Красно-Желтое", "Сладкое", 10, 8),
                 new Apple(),
                 new Apple()
             };
@@ -55,7 +55,7 @@ namespace GoToCSharp
             Console.WriteLine("\n ПЕРЕКРАСИТЬ ЯБЛОКО ");
             apples[3].Repaint();
 
-            Console.WriteLine($"\nВСЕГО КОЛИЧЕСТВО ЯБЛОК: {Apple.Count}");
+            Console.WriteLine($"\n=ВСЕГО КОЛИЧЕСТВО ЯБЛОК: {Apple.Count}");
 
             Console.WriteLine("\n ПРИНТ ВСЕХ ЯБЛОК");
 
@@ -118,7 +118,7 @@ namespace GoToCSharp
 
         static Apple()
         {
-            Console.WriteLine("Вы создали первое яблоко!");
+            Console.WriteLine("+Вы создали первое яблоко!");
         }
 
         public Apple()
@@ -151,14 +151,13 @@ namespace GoToCSharp
         public void Eat()
         {
             Console.Write($" ЯБЛОКО №{Number} | ");
-            Console.WriteLine($" ЦЕЛОСТНОСТЬ №{Whole} ");
+            Console.WriteLine($" ЦЕЛОСТНОСТЬ {Whole} ");
 
-            Console.Write("Введите сколько раз вы укусите: ");
+            Console.Write(" Введите сколько раз вы укусите: ");
             int bite = Int32.Parse(Console.ReadLine());
 
-            Console.WriteLine($" Вы укусили {bite} раза | Целостность яблока: {Whole} ");
-
             Whole -= bite;
+            Console.WriteLine($" Вы укусили {bite} раза | Целостность яблока: {Whole} ");
         }
 
         public void Forget()
@@ -173,7 +172,7 @@ namespace GoToCSharp
         {
             Console.Write($" ЯБЛОКО №{Number} | ");
             Console.WriteLine($"Цвет яблока: {Color}");
-            Console.Write("Введите в какой цвет хотите перекрасить: ");
+            Console.Write(" Введите в какой цвет хотите перекрасить: ");
             string newColor = Console.ReadLine();
             Color = newColor;
         }
