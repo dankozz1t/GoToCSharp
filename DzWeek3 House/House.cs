@@ -51,9 +51,6 @@ namespace GoToCSharp.DzWeek3_House
             team.Build(house);
             house.Print();
 
-
-
-
             Console.ReadKey();
         }
     }
@@ -64,7 +61,7 @@ namespace GoToCSharp.DzWeek3_House
     }
 
     public class Wall : IPart { public string Print() => "  +Стены"; }
-    public class Door : IPart { public string Print() => "  +Двери"; }
+    public class Door : IPart { public string Print() => "  +Дверь"; }
     public class Roof : IPart { public string Print() => "  +Крыша"; }
     public class Window : IPart { public string Print() => "  +Окнo"; }
     public class Basement : IPart { public string Print() => "  +Фундамент"; }
