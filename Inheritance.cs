@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GoToCSharp
 {
@@ -47,7 +48,7 @@ namespace GoToCSharp
     }
 
 
-    public class Manager : Employee
+    public class Manager : Employee, IManager
     {
         private int CountEmployee;
 
@@ -56,6 +57,17 @@ namespace GoToCSharp
             CountEmployee = countEmployee;
         }
 
+        public List<IWorker> Workers { get; set; }
+
+        public void Control()
+        {
+            Console.WriteLine("+ Я контролирую");
+        }
+
+        public void Planing()
+        {
+            Console.WriteLine("+ Я планирую");
+        }
 
         public override void Print()
         {
@@ -64,7 +76,7 @@ namespace GoToCSharp
         }
     }
 
-    public class Specialist : Employee
+    public class Specialist : Employee, IWorker
     {
         private string Qualification;
 
@@ -78,9 +90,14 @@ namespace GoToCSharp
             base.Print();
             Console.WriteLine($" |СПЕЦИАЛИСТ| Квалификация - {Qualification} ");
         }
+
+        public void Work()
+        {
+            Console.WriteLine("+Я работаю! (специалист)");
+        }
     }
 
-    public class Marketer : Employee
+    public class Marketer : Employee, IWorker
     {
         private int CountSuccessfulDeals;
 
@@ -93,6 +110,11 @@ namespace GoToCSharp
         {
             base.Print();
             Console.WriteLine($" |МАРКЕТОЛОГ| Количество удачных сделок - {CountSuccessfulDeals} ");
+        }
+
+        public void Work()
+        {
+            Console.WriteLine("+Я работаю! (маркетолог)");
         }
     }
 
