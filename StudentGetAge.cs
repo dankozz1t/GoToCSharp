@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GoToCSharp
 {
-    public partial class Student
+    public partial class StudentB
     {
         public int GetAge()
         {
