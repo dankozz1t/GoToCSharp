@@ -26,46 +26,46 @@ namespace GoToCSharp
 {
     class GoToStart
     {
-        static void Main(string[] args)
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Title = "DZ_Week1_2";
+        //static void Main(string[] args)
+        //{
+        //    Console.ForegroundColor = ConsoleColor.Yellow;
+        //    Console.Title = "DZ_Week1_2";
 
-            Apple[] apples = {
-                new Apple("Красный принц", "Красное", "Горькое", 8, 10),
-                new Apple("Райское", "Зеленое", "Кислое", 6, 10),
-                new Apple("Домашнее", "Красно-Желтое", "Сладкое", 10, 8),
-                new Apple(),
-                new Apple()
-            };
+        //    Apple[] apples = {
+        //        new Apple("Красный принц", "Красное", "Горькое", 8, 10),
+        //        new Apple("Райское", "Зеленое", "Кислое", 6, 10),
+        //        new Apple("Домашнее", "Красно-Желтое", "Сладкое", 10, 8),
+        //        new Apple(),
+        //        new Apple()
+        //    };
 
-            foreach (var item in apples)
-            {
-                item.Print();
-            }
-            Console.WriteLine("\n ДОБАВЛЕНИЕ САХАРА ");
-            apples[0].AddSugar();
+        //    foreach (var item in apples)
+        //    {
+        //        item.Print();
+        //    }
+        //    Console.WriteLine("\n ДОБАВЛЕНИЕ САХАРА ");
+        //    apples[0].AddSugar();
 
-            Console.WriteLine("\n ОТКУСЫВАНИЕ ЯБЛОКА ");
-            apples[1].Eat();
+        //    Console.WriteLine("\n ОТКУСЫВАНИЕ ЯБЛОКА ");
+        //    apples[1].Eat();
 
-            Console.WriteLine("\n ЗАБЫТЬ ЯБЛОКО ");
-            apples[2].Forget();
+        //    Console.WriteLine("\n ЗАБЫТЬ ЯБЛОКО ");
+        //    apples[2].Forget();
 
-            Console.WriteLine("\n ПЕРЕКРАСИТЬ ЯБЛОКО ");
-            apples[3].Repaint();
+        //    Console.WriteLine("\n ПЕРЕКРАСИТЬ ЯБЛОКО ");
+        //    apples[3].Repaint();
 
-            Console.WriteLine($"\n=ВСЕГО КОЛИЧЕСТВО ЯБЛОК: {Apple.Count}");
+        //    Console.WriteLine($"\n=ВСЕГО КОЛИЧЕСТВО ЯБЛОК: {Apple.Count}");
 
-            Console.WriteLine("\n ПРИНТ ВСЕХ ЯБЛОК");
+        //    Console.WriteLine("\n ПРИНТ ВСЕХ ЯБЛОК");
 
-            foreach (var item in apples)
-            {
-                item.Print();
-            }
+        //    foreach (var item in apples)
+        //    {
+        //        item.Print();
+        //    }
 
-            Console.Read();
-        }
+        //    Console.Read();
+        //}
     }
 
     public partial class Apple

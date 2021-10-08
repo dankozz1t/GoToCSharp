@@ -25,7 +25,7 @@ namespace GoToCSharp
     }
 
 
-    public partial class Student
+    public partial class StudentB
     {
         private int salary;
         public int Salary
@@ -66,11 +66,52 @@ namespace GoToCSharp
         //    Console.ForegroundColor = ConsoleColor.Yellow;
         //    Console.Title = "Start learning CSharp";
 
-        //    Main30_09();
+        //    Main07_10();
 
 
         //    Console.Read();
         //}
+
+
+        static void Main07_10()
+        {
+            try
+            {
+                int a, b, res;
+                a = int.Parse(Console.ReadLine());
+                b = int.Parse(Console.ReadLine());
+                res = a / b;
+                Console.WriteLine(res);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                //throw;
+            }
+            finally
+            {
+                Console.WriteLine("закрыли файл");
+            }
+     
+        }
+        
+        static void Main05_10()
+        {
+            Manager manager = new Manager("Виктория", "Степанова", new DateTime(1973, 08, 1), 1500, 7);
+            manager.Workers = new List<IWorker>
+            {
+                new Specialist("Семен", "Аниме", new DateTime(2007, 03, 8), 100, "Мидл пайтон"),
+                new Marketer("Марк", "Маркович", new DateTime(1998, 06, 24), 5000, 19188)
+            };
+            manager.Planing();
+            foreach (var item in manager.Workers)
+            {
+                Console.WriteLine(item.ToString());
+                (item as Human).Think();
+                item.Work();
+            }
+            manager.Control();
+        }
 
         static void Main30_09()
         {
@@ -215,7 +256,7 @@ namespace GoToCSharp
             //b.MethodB(a);
 
 
-            Student student = new Student
+            StudentB student = new StudentB
             {
                 Name = "Name",
                 Age = 16,
