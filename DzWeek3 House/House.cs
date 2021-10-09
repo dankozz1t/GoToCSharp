@@ -8,7 +8,7 @@ namespace GoToCSharp.DzWeek3_House
 {
     public static class GoToStart
     {
-        static void Main(string[] args)
+        static void MainHouse(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Title = "DZ_Week1_3_Building_House";
