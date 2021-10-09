@@ -66,9 +66,6 @@ namespace GoToCSharp
         //    Console.ForegroundColor = ConsoleColor.Yellow;
         //    Console.Title = "Start learning CSharp";
 
-        //    Main07_10();
-
-
         //    Console.Read();
         //}
 
