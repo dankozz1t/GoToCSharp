@@ -6,7 +6,7 @@ namespace GoToCSharp.TaskFigure
 {
     public static class GoToStart
     {
-        static void Main(string[] args)
+        static void MainFigures(string[] args)
         {
             Console.Title = "Task_Drow_Fugures";
 
