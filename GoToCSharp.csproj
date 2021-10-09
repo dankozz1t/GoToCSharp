@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DzWeek1_1\Tank.cs" />
     <Compile Include="TaskBankrupt\Money.cs" />
+    <Compile Include="TaskFigures\Figure.cs" />
     <Compile Include="Vector.cs" />
   </ItemGroup>
   <ItemGroup>
