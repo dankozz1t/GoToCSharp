@@ -52,7 +52,8 @@
     <Compile Include="Inheritance.cs" />
     <Compile Include="Interface.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="Delegate .cs" />
+    <Compile Include="StudentC.cs" />
     <Compile Include="StudentGetAge.cs" />
     <Compile Include="DzWeek1_1\DzWeek1_1.cs" />
     <Compile Include="Program.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="DzWeek1_1\Tank.cs" />
     <Compile Include="TaskBankrupt\Money.cs" />
     <Compile Include="TaskFigures\Figure.cs" />
+    <Compile Include="TaskStudent\Student.cs" />
     <Compile Include="Vector.cs" />
   </ItemGroup>
   <ItemGroup>

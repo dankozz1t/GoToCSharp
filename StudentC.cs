@@ -18,7 +18,7 @@ namespace GoToCSharp
         }
     }
 
-    class Student : IComparable, ICloneable
+    class StudentC : IComparable, ICloneable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -27,7 +27,7 @@ namespace GoToCSharp
 
         public object Clone()
         {
-            Student temp = (Student)this.MemberwiseClone();
+            StudentC temp = (StudentC)this.MemberwiseClone();
             temp.StudentCard = new StudentCard
             {
                 Series = this.StudentCard.Series,
@@ -38,9 +38,9 @@ namespace GoToCSharp
 
         public int CompareTo(object obj)
         {
-            if (obj is Student)
+            if (obj is StudentC)
             {
-                return LastName.CompareTo((obj as Student).LastName);
+                return LastName.CompareTo((obj as StudentC).LastName);
             }
             throw new NotImplementedException();
         }
@@ -54,13 +54,13 @@ namespace GoToCSharp
 
     class Group : IEnumerable
     {
-        Student[] students;
+        StudentC[] students;
 
         public Group()
         {
-            students = new Student[]
+            students = new StudentC[]
             {
-                new Student {
+                new StudentC {
                     FirstName = "Fedot",
                     LastName = "Frolov",
                     BirthDay = new DateTime (1990, 10, 5),
@@ -70,7 +70,7 @@ namespace GoToCSharp
                         Number = 923456
                     }
                 },
-                new Student
+                new StudentC
                 {
                     FirstName = "Irina",
                     LastName = "Nikanorova",
@@ -81,7 +81,7 @@ namespace GoToCSharp
                         Number = 223456
                     }
                 },
-                new Student
+                new StudentC
                 {
                     FirstName = "Igor",
                     LastName = "Nikolaev",
@@ -92,7 +92,7 @@ namespace GoToCSharp
                         Number = 123454
                     }
                 },
-                new Student
+                new StudentC
                 {
                     FirstName = "Olga",
                     LastName = "Dubinkina",
@@ -127,9 +127,9 @@ namespace GoToCSharp
     {
         public int Compare(object x, object y)
         {
-            if (x is Student && y is Student)
+            if (x is StudentC && y is StudentC)
             {
-                return DateTime.Compare((x as Student).BirthDay, (y as Student).BirthDay);
+                return DateTime.Compare((x as StudentC).BirthDay, (y as StudentC).BirthDay);
             }
 
             throw new NotImplementedException();
@@ -140,15 +140,15 @@ namespace GoToCSharp
     {
         public int Compare(object x, object y)
         {
-            if (x is Student && y is Student)
+            if (x is StudentC && y is StudentC)
             {
-                if ((x as Student).StudentCard.Series != (y as Student).StudentCard.Series)
+                if ((x as StudentC).StudentCard.Series != (y as StudentC).StudentCard.Series)
                 {
-                    return (x as Student).StudentCard.Series.CompareTo((y as Student).StudentCard.Series);
+                    return (x as StudentC).StudentCard.Series.CompareTo((y as StudentC).StudentCard.Series);
                 }
                 else
                 {
-                    return (x as Student).StudentCard.Number.CompareTo((y as Student).StudentCard.Number);
+                    return (x as StudentC).StudentCard.Number.CompareTo((y as StudentC).StudentCard.Number);
                 }
             }
             throw new NotImplementedException();

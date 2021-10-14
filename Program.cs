@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace GoToCSharp
 {
@@ -66,9 +67,85 @@ namespace GoToCSharp
         //    Console.ForegroundColor = ConsoleColor.Yellow;
         //    Console.Title = "Start learning CSharp";
 
+           
+
         //    Console.Read();
         //}
 
+        static void Main14_10()
+        {
+            //Point2D<int> p1 = new Point2D<int>();
+            //Console.WriteLine(typeof(Point2D<int>));
+            //MaxElem(p1);
+
+            Calc calc = new Calc();
+
+            string temp = Console.ReadLine();
+            char oper = ' ';
+            foreach (var i in temp)
+            {
+                if (i == '+' || i == '-' || i == '*')
+                {
+                    oper = i;
+                    break;
+                }
+            }
+
+            string[] numberms = temp.Split(oper);
+
+            CalcDelegate del = null;
+
+            switch (oper)
+            {
+                case '+':
+                    del = new CalcDelegate(calc.Add);
+                    break;
+                case '-':
+                    del = new CalcDelegate(Calc.Diff);
+                    break;
+                case '*':
+                    del = new CalcDelegate(calc.Mult);
+                    break;
+                default: break;
+            }
+
+            Console.WriteLine(del(int.Parse(numberms[0]), int.Parse(numberms[1])));
+
+        }
+
+        static T MaxElem<T>(T[] arr) where T : IComparable
+        {
+            T max = arr[0];
+            foreach (T item in arr)
+            {
+                if (item.CompareTo(max) > 0)
+                    max = item;
+            }
+            return max;
+        }
+
+
+        static void Main12_10()
+        {
+            try
+            {
+                int a, b, res;
+                a = int.Parse(Console.ReadLine());
+                b = int.Parse(Console.ReadLine());
+                res = a / b;
+                Console.WriteLine(res);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                //throw;
+            }
+            finally
+            {
+                Console.WriteLine("закрыли файл");
+            }
+
+        }
 
         static void Main07_10()
         {
@@ -89,9 +166,9 @@ namespace GoToCSharp
             {
                 Console.WriteLine("закрыли файл");
             }
-     
+
         }
-        
+
         static void Main05_10()
         {
             Manager manager = new Manager("Виктория", "Степанова", new DateTime(1973, 08, 1), 1500, 7);
@@ -266,7 +343,7 @@ namespace GoToCSharp
             student.Print();
 
             Console.WriteLine(student.Salary);
-            //Student student2 = new Student("Alex", 18);
+            //StudentC student2 = new StudentC("Alex", 18);
             //student2.Print();
 
             //Console.WriteLine(student2.GetAge()); //Из разбивки файла
