@@ -7,7 +7,7 @@ namespace GoToCSharp.TaskBankrupt
 {
     public static class GoToStart
     {
-        public static void Main(string[] args)
+        public static void MainMoney(string[] args)
         {
             Console.Title = "Task_Banktor";
 
