@@ -188,6 +188,29 @@ namespace GoToCSharp
     }
 
 
+    public class Point2D<T> where T : struct //Ограничение на Т, структуры, классы. Дженерик классы
+    {
+        public T X { get; set; }
+        public T Y { get; set; }
+
+        public Point2D(T x, T y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public Point2D()
+        {
+            X = default(T);
+            Y = default(T);
+        }
+    }
+
+    public class Point3D : Point2D<int>
+    {
+
+    }
+
 
 
 }
