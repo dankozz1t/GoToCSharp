@@ -61,16 +61,91 @@ namespace GoToCSharp
 
     class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    //Console.BackgroundColor = ConsoleColor.DarkGray;
-        //    Console.ForegroundColor = ConsoleColor.Yellow;
-        //    Console.Title = "Start learning CSharp";
+        static void Main(string[] args)
+        {
+            //Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Title = "Start learning CSharp";
 
-           
 
-        //    Console.Read();
-        //}
+            Main19_10();
+
+            Console.Read();
+        }
+
+
+        static void Main19_10()
+        {
+            string str = "ДОБрыЙ денЬ";
+            str.PrintColor(ConsoleColor.Cyan);
+
+        }
+
+        static void Main15_10()
+        {
+            List<GoToCSharpStud.Student> students = new List<GoToCSharpStud.Student>
+            {
+                new    GoToCSharpStud.Student {
+                    FirstName = "Fedot",
+                    LastName = "Frolov",
+                    BirthDay = new DateTime (1990, 10, 5),
+                    StudentCard = new GoToCSharpStud.StudentCard
+                    {
+                        Series = "AB",
+                        Number = 923456
+                    }
+                },
+                new    GoToCSharpStud.Student
+                {
+                    FirstName = "Irina",
+                    LastName = "Nikanorova",
+                    BirthDay = new DateTime(1991, 10, 12),
+                    StudentCard = new GoToCSharpStud.StudentCard
+                    {
+                        Series = "AB",
+                        Number = 223456
+                    }
+                },
+                new    GoToCSharpStud.Student
+                {
+                    FirstName = "Igor",
+                    LastName = "Nikolaev",
+                    BirthDay = new DateTime(1989, 8, 10),
+                    StudentCard = new GoToCSharpStud.StudentCard
+                    {
+                        Series = "AC",
+                        Number = 123454
+                    }
+                },
+                new    GoToCSharpStud.Student
+                {
+                    FirstName = "Olga",
+                    LastName = "Dubinkina",
+                    BirthDay = new DateTime(1988, 4, 13),
+                    StudentCard = new GoToCSharpStud.StudentCard
+                    {
+                        Series = "BC",
+                        Number = 123450
+                    }
+                }
+            };
+
+            GoToCSharpStud.Teacher teacher = new GoToCSharpStud.Teacher();
+
+            foreach (var item in students)
+            {
+                teacher.ExamEvent += item.Exam;
+            }
+
+            //ExamDelegate exam = null;
+            //exam += students[0].Exam;
+
+            //exam(new DateTime(2021, 9, 18));
+
+
+            teacher.SetExam(new DateTime(2021, 10, 15));
+
+        }
 
         static void Main14_10()
         {

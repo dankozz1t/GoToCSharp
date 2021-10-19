@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoToCSharp
+namespace GoToCSharpStud
 {
     class StudentCard
     {
@@ -17,17 +17,23 @@ namespace GoToCSharp
             return $"Студенческий билет: {Series} - {Number}";
         }
     }
-
-    class StudentC : IComparable, ICloneable
+    class Student : IComparable<Student>, IComparable, ICloneable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDay { get; set; }
         public StudentCard StudentCard { get; set; }
 
+
+
+
+        public static IComparer SortByDate
+        {
+            get { return (IComparer)new DateComparer(); }
+        }
         public object Clone()
         {
-            StudentC temp = (StudentC)this.MemberwiseClone();
+            Student temp = (Student)this.MemberwiseClone();
             temp.StudentCard = new StudentCard
             {
                 Series = this.StudentCard.Series,
@@ -38,29 +44,48 @@ namespace GoToCSharp
 
         public int CompareTo(object obj)
         {
-            if (obj is StudentC)
+            if (obj is Student)
             {
-                return LastName.CompareTo((obj as StudentC).LastName);
+                return LastName.CompareTo((obj as Student).LastName);
             }
             throw new NotImplementedException();
         }
 
-        public override string ToString()
+        public string ShortName()
         {
-            return $"Name : {LastName} {FirstName}\nBirthDay : {BirthDay.ToShortDateString()}\n{StudentCard}\n\n";
+            return $"{LastName} {FirstName}";
         }
 
+        public override string ToString()
+        {
+            return $"ФИО : {LastName} {FirstName}\nДата рождения : {BirthDay.ToShortDateString()}\n{StudentCard}\n";
+        }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+
+        public int CompareTo(Student other)
+        {
+            return LastName.CompareTo(other.LastName);
+        }
+
+        public void Exam(DateTime date)
+        {
+            Console.WriteLine($"Студенту {FirstName} {LastName} назначен экзамен {date.Date} ");
+        }
     }
 
-    class Group : IEnumerable
+    class Group
     {
-        StudentC[] students;
+        Student[] students;
 
         public Group()
         {
-            students = new StudentC[]
+            students = new Student[]
             {
-                new StudentC {
+                new Student {
                     FirstName = "Fedot",
                     LastName = "Frolov",
                     BirthDay = new DateTime (1990, 10, 5),
@@ -70,7 +95,7 @@ namespace GoToCSharp
                         Number = 923456
                     }
                 },
-                new StudentC
+                new Student
                 {
                     FirstName = "Irina",
                     LastName = "Nikanorova",
@@ -81,7 +106,7 @@ namespace GoToCSharp
                         Number = 223456
                     }
                 },
-                new StudentC
+                new Student
                 {
                     FirstName = "Igor",
                     LastName = "Nikolaev",
@@ -92,7 +117,7 @@ namespace GoToCSharp
                         Number = 123454
                     }
                 },
-                new StudentC
+                new Student
                 {
                     FirstName = "Olga",
                     LastName = "Dubinkina",
@@ -106,9 +131,13 @@ namespace GoToCSharp
             };
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<Student> GetEnumerator()
         {
-            return students.GetEnumerator();
+            //return students.GetEnumerator();
+            for (int i = 0; i < students.Length; i++)
+            {
+                yield return students[i];
+            }
         }
 
         public void Sort()
@@ -127,9 +156,9 @@ namespace GoToCSharp
     {
         public int Compare(object x, object y)
         {
-            if (x is StudentC && y is StudentC)
+            if (x is Student && y is Student)
             {
-                return DateTime.Compare((x as StudentC).BirthDay, (y as StudentC).BirthDay);
+                return DateTime.Compare((x as Student).BirthDay, (y as Student).BirthDay);
             }
 
             throw new NotImplementedException();
@@ -140,18 +169,51 @@ namespace GoToCSharp
     {
         public int Compare(object x, object y)
         {
-            if (x is StudentC && y is StudentC)
+            if (x is Student && y is Student)
             {
-                if ((x as StudentC).StudentCard.Series != (y as StudentC).StudentCard.Series)
+                if ((x as Student).StudentCard.Series != (y as Student).StudentCard.Series)
                 {
-                    return (x as StudentC).StudentCard.Series.CompareTo((y as StudentC).StudentCard.Series);
+                    return (x as Student).StudentCard.Series.CompareTo((y as Student).StudentCard.Series);
                 }
                 else
                 {
-                    return (x as StudentC).StudentCard.Number.CompareTo((y as StudentC).StudentCard.Number);
+                    return (x as Student).StudentCard.Number.CompareTo((y as Student).StudentCard.Number);
                 }
             }
             throw new NotImplementedException();
+        }
+    }
+
+    delegate void ExamDelegate(DateTime date);
+
+    class Teacher
+    {
+        private SortedList<int, ExamDelegate> listlDelegates = new SortedList<int, ExamDelegate>();
+
+        public event ExamDelegate ExamEvent
+        {
+            add
+            {
+                if (!listlDelegates.ContainsKey((value.Target as Student).GetHashCode()))
+                {
+                    listlDelegates.Add((value.Target as Student).GetHashCode(), value);
+                }
+            }
+            remove
+            {
+                if (listlDelegates.ContainsKey((value.Target as Student).GetHashCode()))
+                {
+                    listlDelegates.Remove((value.Target as Student).GetHashCode());
+                }
+            }
+        }
+
+        public void SetExam(DateTime date)
+        {
+            foreach (var VARIABLE in listlDelegates)
+            {
+                VARIABLE.Value(date);
+            }
         }
     }
 }

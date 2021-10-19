@@ -119,8 +119,19 @@ namespace GoToCSharp
     }
 
 
-
-
+    /// <summary>
+    /// Метод выводит строку в заданом цвете.
+    /// </summary>
+    static class MyString
+    {
+        public static void PrintColor(this string str, ConsoleColor color)
+        {
+            ConsoleColor oldColor = Console.ForegroundColor;
+            Console.ForegroundColor = color;
+            Console.WriteLine(str);
+            Console.ForegroundColor = oldColor;
+        }
+    }
 
 
 
