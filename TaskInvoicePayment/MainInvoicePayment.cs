@@ -6,21 +6,19 @@ namespace GoToCSharp.TaskInvoicePayment
 {
     public class MainInvoicePayment
     {
-        static void Main(string[] args)
+        static void MainPayment(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Title = "Task Invoice for payment";
 
             InvoicePayment p = new InvoicePayment { CountDay = 2, CountDelayPaymentDay = 1, };
-            p.IsAll = true;
-
-            Console.WriteLine(p);
+            InvoicePayment.IsAll = false;
 
             SoapFormatter soap = new SoapFormatter();
-            //using (Stream stream = File.Create("payment.soap"))
-            //{
-            //    soap.Serialize(stream, p);
-            //}
+            using (Stream stream = File.Create("payment.soap"))
+            {
+                soap.Serialize(stream, p);
+            }
 
             InvoicePayment p2 = null;
             using (Stream stream = File.OpenRead("payment.soap"))
