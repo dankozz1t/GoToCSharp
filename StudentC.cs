@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using GoToCSharp;
 
 namespace GoToCSharpStud
 {
-    class StudentCard
+    [Serializable]
+    public class StudentCard
     {
         public string Series { get; set; }
         public int Number { get; set; }
@@ -17,13 +20,29 @@ namespace GoToCSharpStud
             return $"Студенческий билет: {Series} - {Number}";
         }
     }
-    class Student : IComparable<Student>, IComparable, ICloneable
+
+    [Serializable]
+    [Programmer]
+    public class Student : IComparable<Student>, IComparable, ICloneable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDay { get; set; }
         public StudentCard StudentCard { get; set; }
 
+        [OnSerializing]
+        private void OnSerializing(StreamingContext contex)
+        {
+            FirstName = FirstName.ToUpper();
+            LastName = LastName.ToUpper();
+        }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext contex)
+        {
+            FirstName = FirstName.ToLower();
+            LastName = LastName.ToLower();
+        }
 
 
 
@@ -31,6 +50,7 @@ namespace GoToCSharpStud
         {
             get { return (IComparer)new DateComparer(); }
         }
+
         public object Clone()
         {
             Student temp = (Student)this.MemberwiseClone();
@@ -71,6 +91,7 @@ namespace GoToCSharpStud
             return LastName.CompareTo(other.LastName);
         }
 
+        [Programmer("Vlad", "2021-09-10")]
         public void Exam(DateTime date)
         {
             Console.WriteLine($"Студенту {FirstName} {LastName} назначен экзамен {date.Date} ");

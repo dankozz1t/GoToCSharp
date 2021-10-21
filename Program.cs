@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Formatters.Soap;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
+using System.Xml.Serialization;
+using GoToCSharpStud;
+
 
 namespace GoToCSharp
 {
@@ -61,24 +69,153 @@ namespace GoToCSharp
 
     class Program
     {
-        static void Main(string[] args)
+        //static void Main(string[] args)
+        //{
+        //    //Console.BackgroundColor = ConsoleColor.DarkGray;
+        //    Console.ForegroundColor = ConsoleColor.Yellow;
+        //    Console.Title = "Start learning CSharp";
+
+
+        //    Main21_10();
+
+        //    Console.Read();
+        //}
+
+        static void Main21_10()
         {
-            //Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Title = "Start learning CSharp";
+            //foreach (var item in typeof(GoToCSharpStud.Student).GetCustomAttributes(false))
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //foreach (var item in typeof(GoToCSharpStud.Student).GetMethods())
+            //{
+            //    Console.WriteLine();
+            //    Console.WriteLine(item.Name);
+            //    Console.WriteLine("--------");
+            //    foreach (var attr in item.GetCustomAttributes(false))
+            //    {
+            //        Console.WriteLine(attr);
+            //    }
+            //}
+
+            GoToCSharpStud.Student st = new GoToCSharpStud.Student()
+            {
+                FirstName = "Olga",
+                LastName = "Dubinkina",
+                BirthDay = new DateTime(1988, 4, 13),
+                StudentCard = new GoToCSharpStud.StudentCard
+                {
+                    Series = "BC",
+                    Number = 123450
+                }
+            };
+
+            //BinaryFormatter bin = new BinaryFormatter();
+            //using (Stream stream = File.Create("stud.bin"))
+            //{
+            //    bin.Serialize(stream, st);
+            //}
 
 
-            Main19_10();
+            //Student st1 = null;
+            //using (Stream stream = File.OpenRead("stud.bin"))
+            //{
+            //    st1 = (Student)bin.Deserialize(stream);
+            //}
+            //Console.WriteLine(st1);
 
-            Console.Read();
+            //SoapFormatter soap = new SoapFormatter();
+            //using (Stream stream = File.Create("stud.soap"))
+            //{
+            //    soap.Serialize(stream, st);
+            //}
+
+            //XmlSerializer xml = new XmlSerializer(typeof(Student));
+            //using (Stream stream = File.Create("stud.xml"))
+            //{
+            //    xml.Serialize(stream, st);
+            //}
+
+            ////Student st1 = null;
+            ////using (Stream stream = File.OpenRead("stud.xml"))
+            ////{
+            ////    st1 = (Student)xml.Deserialize(stream);
+            ////}
+            ////Console.WriteLine(st1);
+
+
+            List<GoToCSharpStud.Student> students = new List<GoToCSharpStud.Student>
+            {
+                new    GoToCSharpStud.Student {
+                    FirstName = "Fedot",
+                    LastName = "Frolov",
+                    BirthDay = new DateTime (1990, 10, 5),
+                    StudentCard = new GoToCSharpStud.StudentCard
+                    {
+                        Series = "AB",
+                        Number = 923456
+                    }
+                },
+                new    GoToCSharpStud.Student
+                {
+                    FirstName = "Irina",
+                    LastName = "Nikanorova",
+                    BirthDay = new DateTime(1991, 10, 12),
+                    StudentCard = new GoToCSharpStud.StudentCard
+                    {
+                        Series = "AB",
+                        Number = 223456
+                    }
+                },
+                new    GoToCSharpStud.Student
+                {
+                    FirstName = "Igor",
+                    LastName = "Nikolaev",
+                    BirthDay = new DateTime(1989, 8, 10),
+                    StudentCard = new GoToCSharpStud.StudentCard
+                    {
+                        Series = "AC",
+                        Number = 123454
+                    }
+                },
+                new    GoToCSharpStud.Student
+                {
+                    FirstName = "Olga",
+                    LastName = "Dubinkina",
+                    BirthDay = new DateTime(1988, 4, 13),
+                    StudentCard = new GoToCSharpStud.StudentCard
+                    {
+                        Series = "BC",
+                        Number = 123450
+                    }
+                }
+            };
+
+            SoapFormatter soap = new SoapFormatter();
+            using (Stream stream = File.Create("stud2.soap"))
+            {
+                soap.Serialize(stream, students);
+            }
+
+            //List<Student> st1 = null;
+            //using (Stream stream = File.OpenRead("stud2.soap"))
+            //{
+            //    st1 = (List<Student>)soap.Deserialize(stream);
+            //}
+
+            //foreach (var item in st1)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
         }
 
 
         static void Main19_10()
         {
             string str = "ДОБрыЙ денЬ";
-            str.PrintColor(ConsoleColor.Cyan);
-
+            //str.PrintColor(ConsoleColor.Cyan);
         }
 
         static void Main15_10()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace GoToCSharp
 {
@@ -120,8 +121,10 @@ namespace GoToCSharp
 
 
     /// <summary>
-    /// Метод выводит строку в заданом цвете.
+    /// Этот метод выводит строку в заданом цвете.
     /// </summary>
+    /// <param name="color">В каком цвете выводит строку</param>
+    /// <returns>Строка в нужном цвете и возращает ст</returns>
     static class MyString
     {
         public static void PrintColor(this string str, ConsoleColor color)
@@ -134,6 +137,47 @@ namespace GoToCSharp
     }
 
 
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class ProgrammerAttribute : Attribute
+    {
+        private string name = "Alex";
+        DateTime date = DateTime.Now;
+
+
+        public ProgrammerAttribute(){}
+
+        public ProgrammerAttribute(string n, string d)
+        {
+            name = n;
+            date = Convert.ToDateTime(d);
+        }
+
+        public override string ToString()
+        {
+            return $"Програмист: {name} | дата: {date.ToShortDateString()}";
+        }
+    }
+
+    public class People :ISerializable
+    {
+        protected string Name { get; set; }
+        protected int Age { get; set; }
+        protected int date { get { return Age * 365;} }
+
+        public People(){}
+
+        private People(SerializationInfo info, StreamingContext contes)
+        {
+            Name = info.GetString("MyName");
+            Age = info.GetInt32("MyAge");
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("MyName", Name);
+            info.AddValue("MyAge", Age);
+        }
+    }
 
 
 }
