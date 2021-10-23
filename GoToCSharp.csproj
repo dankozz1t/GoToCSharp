@@ -64,6 +64,7 @@
     <Compile Include="DzWeek1_1\Tank.cs" />
     <Compile Include="TaskBankrupt\Money.cs" />
     <Compile Include="TaskCarRaing\Car.cs" />
+    <Compile Include="TaskCarRaing\Game.cs" />
     <Compile Include="TaskCarRaing\MainCarRacing.cs" />
     <Compile Include="TaskFigures\Figure.cs" />
     <Compile Include="TaskInvoicePayment\InvoicePayment.cs" />

@@ -1,155 +1,94 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace GoToCSharp.TaskCarRacing
 {
-    public class Car
+    public abstract class Car
     {
-        public bool goStart;
         public string CarNumber;
-        ConsoleColor Color;
-        int Speed;
+        public ConsoleColor Color;
+        public int Speed { set; get; }
         public int DistanceTraveled { set; get; }
+        List<int> SpeedHistory = new List<int>();
 
-
-        public Car(string carNumber, ConsoleColor color, int speed, bool toRace)
+        protected Car(string carNumber, ConsoleColor color)
         {
             CarNumber = carNumber;
             Color = color;
-            Speed = speed;
-            goStart = toRace;
         }
 
-        public void Drive(int distance)
+        public virtual string Drive()
         {
             Console.ForegroundColor = Color;
+            SpeedHistory.Add(Speed);
+
             DistanceTraveled -= Speed;
-            Console.WriteLine($"{CarNumber} : {Speed} км/м | Осталось роехать: {DistanceTraveled} / {distance} км");
+            if (DistanceTraveled < 0) DistanceTraveled = 0;
+            return $"\"{CarNumber}\" | Скорость: {Speed} км | Осталось проехать: {DistanceTraveled} км";
         }
 
-        public void toRace()
-        {
-            Console.WriteLine($"Машине {CarNumber} учавстует в гонке");
-        }
-
-        public void DistanceNow(int distance)
+        public void ToRace(int distance)
         {
             DistanceTraveled = distance;
-            Console.WriteLine($"Машине {CarNumber} задано дистанцию {distance} км");
+            Console.WriteLine($"Машина {CarNumber} учавстует в гонке на дистанцию {distance}");
         }
 
+        public void Finish()
+        {
+            Console.ForegroundColor = Color;
+            Console.WriteLine($"Машина {CarNumber} пересекла черту ФИНИША! Поздравляем!");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($"История скорости: ");
+            foreach (var speedH in SpeedHistory)
+                Console.Write(speedH + ", ");
+        }
     }
 
-    public delegate void StartDelegate();
-    public delegate void DistanceDelegate(int distance);
 
-    //public class SportCar : Car
-    //{
-    //    public SportCar(string carNumber, ConsoleColor color, int speed) : base(carNumber, color, speed) { }
-
-    //    public string Drive()
-    //    {
-    //        return $"Спортивная " + base.Drive();
-    //    }
-
-
-    //}
-
-
-    public class Game
+    public class Sport : Car
     {
-        //public List<Car> cars = new List<Car>();
-        private SortedList<string, StartDelegate> list = new SortedList<string, StartDelegate>();
+        private static Random random = new Random();
+        private int SpeedMin = 4;
+        private int SpeedMax = 10;
 
-        private int Distance;
+        public Sport(string carNumber, ConsoleColor color) : base(carNumber, color) { }
 
-
-        //public Game(List<Car> cars)
-        //{
-        //    this.cars = cars;
-        //}
-
-        //public void Start()
-        //{
-        //    Thread.Sleep(1000);
-        //    foreach (var car in cars)
-        //    {
-        //        Console.WriteLine(car.Drive());
-        //    }
-
-        //}
-
-
-        public event StartDelegate Regestr
+        public override string Drive()
         {
-            add
-            {
-                if ((value.Target as Car).goStart)
-                {
-                    list.Add((value.Target as Car).CarNumber, value);
-                }
-            }
-            remove
-            {
-                if (!(value.Target as Car).goStart)
-                {
-                    list.Remove((value.Target as Car).CarNumber);
-                }
-            }
+            Speed = random.Next(SpeedMin, SpeedMax);
+            return $"СПОРТКАР (speed({SpeedMin} - {SpeedMax})) :: " + base.Drive();
         }
-
-
-
-
-        public event DistanceDelegate Finish;
-        //{
-        //    add
-        //    {
-        //        if ((value.Target as Car).DistanceTraveled > 0)
-        //        {
-        //            cars.Add(value.Target);
-        //        }
-        //    }
-        //    remove
-        //    {
-        //        if ((value.Target as Car).DistanceTraveled <= 0)
-        //        {
-        //            cars.Remove(value.Target as Car);
-        //        }
-        //    }
-        //}
-
-        public void OnEvent(int dis)
-        {
-            if (Finish != null)
-            {
-                Finish(dis);
-            }
-            throw new Exception("Что-то пошло не так");
-        }
-
-
-        public void Reg()
-        {
-            foreach (var item in list)
-            {
-                item.Value();
-            }
-        }
-
-
-        public void DistanceSet(int distance)
-        {
-            //Distance = distance;
-            //foreach (var item in cars)
-            //{
-
-            //    item.DistanceNow(Distance);
-            //}
-        }
-
     }
 
+    public class Passenger : Car
+    {
+        private static Random random = new Random();
+        private int SpeedMin = 2;
+        private int SpeedMax = 7;
+
+        public Passenger(string carNumber, ConsoleColor color) : base(carNumber, color) { }
+
+        public override string Drive()
+        {
+            Speed = random.Next(SpeedMin, SpeedMax);
+            return $"ЛЕГКОВАЯ (speed({SpeedMin} - {SpeedMax})) :: " + base.Drive();
+        }
+    }
+
+    public class Truck : Car
+    {
+        private static Random random = new Random();
+        private int SpeedMin = 1;
+        private int SpeedMax = 4;
+
+        public Truck(string carNumber, ConsoleColor color) : base(carNumber, color) { }
+
+        public override string Drive()
+        {
+            Speed = random.Next(SpeedMin, SpeedMax);
+            return $"ГРУЗОВИК (speed({SpeedMin} - {SpeedMax})) :: " + base.Drive();
+        }
+    }
 
 }

@@ -73,7 +73,7 @@ namespace GoToCSharp
         //{
         //    //Console.BackgroundColor = ConsoleColor.DarkGray;
         //    Console.ForegroundColor = ConsoleColor.Yellow;
-        //    Console.Title = "Start learning CSharp";
+        //    Console.Title = "Recording learning CSharp";
 
 
         //    Main21_10();
@@ -524,7 +524,7 @@ namespace GoToCSharp
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Title = "Start learning CSharp";
+            Console.Title = "Recording learning CSharp";
 
             //Console.WriteLine(Sum(1, 2, 3));
 
