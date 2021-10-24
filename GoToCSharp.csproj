@@ -63,6 +63,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DzWeek1_1\Tank.cs" />
     <Compile Include="TaskBankrupt\Money.cs" />
+    <Compile Include="TaskCardGame\Card.cs" />
+    <Compile Include="TaskCardGame\Deck.cs" />
+    <Compile Include="TaskCardGame\GameCard.cs" />
+    <Compile Include="TaskCardGame\MainCardGame.cs" />
+    <Compile Include="TaskCardGame\Player.cs" />
     <Compile Include="TaskCarRaing\Car.cs" />
     <Compile Include="TaskCarRaing\Game.cs" />
     <Compile Include="TaskCarRaing\MainCarRacing.cs" />
