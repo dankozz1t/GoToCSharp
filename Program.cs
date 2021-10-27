@@ -10,9 +10,12 @@ using System.Runtime.Serialization.Formatters.Soap;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using GoToCSharp.Bank;
 using GoToCSharpStud;
+using System.Text.RegularExpressions;
 
 
 namespace GoToCSharp
@@ -69,17 +72,266 @@ namespace GoToCSharp
 
     class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    //Console.BackgroundColor = ConsoleColor.DarkGray;
-        //    Console.ForegroundColor = ConsoleColor.Yellow;
-        //    Console.Title = "Recording learning CSharp";
+        static void Main(string[] args)
+        {
+            //Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Title = "Recording learning CSharp";
+
+            GoToCSharp.Bank.MainBank bank = new MainBank();
+            bank.mainBank();
 
 
-        //    Main21_10();
 
-        //    Console.Read();
-        //}
+            Console.Read();
+        }
+
+        static void Main27_10()
+        {
+            string TelPatt = @"^\+38\(0\d{2}\)\d{3}-\d{2}-\d{2}"; //Шаблон номера телефона +38(093)662-52-65
+            string NamePatt = @"^[A-ZА-Я][a-zа-я]+(\-[A-ZА-Я][a-zа-я]+)*$"; //Шаблон имени Имя \ Имя-Имя / Имя-Имя-Имя..
+            //string SurnamePatt = @"^[A-ZА-Я][a-zа-я]+*$"; //Шаблон фамилии
+
+            string Pattern = NamePatt;//Шаблон
+
+            string input = "";
+            Regex regex = regex = new Regex(Pattern);
+
+            while (input != "q")
+            {
+                input = Console.ReadLine();
+                Console.WriteLine(regex.IsMatch(input) ? "Правильный ввод" : "Неправильный ввод");
+            }
+
+
+
+        }
+
+        static void PrintNode(XmlNode node)
+        {
+            Console.WriteLine($"Type: {node.NodeType} | Name: {node.Name} | Value: {node.Value}");
+
+
+            if (node.Attributes != null)
+            {
+                foreach (XmlAttribute attribute in node.Attributes)
+                {
+                    Console.WriteLine($"Type: {attribute.NodeType} | Name: {attribute.Name} | Value: {attribute.Value}");
+                }
+            }
+
+            if (node.HasChildNodes)
+            {
+                foreach (XmlNode xmlElement in node.ChildNodes)
+                {
+                    PrintNode(xmlElement);
+                }
+            }
+
+            Console.WriteLine("------------");
+        }
+
+        static void Main26_10()
+        {
+            //-------------------------------------------------------------------------------ЗАПИСЬ СТУДЕНТОВ
+            //List<GoToCSharpStud.Student> students = new List<GoToCSharpStud.Student>
+            //{
+            //    new    GoToCSharpStud.Student {
+            //        FirstName = "Fedot",
+            //        LastName = "Frolov",
+            //        BirthDay = new DateTime (1990, 10, 5),
+            //        StudentCard = new GoToCSharpStud.StudentCard
+            //        {
+            //            Series = "AB",
+            //            Number = 923456
+            //        }
+            //    },
+            //    new    GoToCSharpStud.Student
+            //    {
+            //        FirstName = "Irina",
+            //        LastName = "Nikanorova",
+            //        BirthDay = new DateTime(1991, 10, 12),
+            //        StudentCard = new GoToCSharpStud.StudentCard
+            //        {
+            //            Series = "AB",
+            //            Number = 223456
+            //        }
+            //    },
+            //    new    GoToCSharpStud.Student
+            //    {
+            //        FirstName = "Igor",
+            //        LastName = "Nikolaev",
+            //        BirthDay = new DateTime(1989, 8, 10),
+            //        StudentCard = new GoToCSharpStud.StudentCard
+            //        {
+            //            Series = "AC",
+            //            Number = 123454
+            //        }
+            //    },
+            //    new    GoToCSharpStud.Student
+            //    {
+            //        FirstName = "Olga",
+            //        LastName = "Dubinkina",
+            //        BirthDay = new DateTime(1988, 4, 13),
+            //        StudentCard = new GoToCSharpStud.StudentCard
+            //        {
+            //            Series = "BC",
+            //            Number = 123450
+            //        }
+            //    }
+            //};
+
+            //XmlDocument doc = new XmlDocument();
+
+            //XmlNode root = doc.CreateElement("Students");
+            //doc.AppendChild(doc.CreateXmlDeclaration("1.0", "utf-16", null));
+            //foreach (var student in students)
+            //{
+            //    XmlNode st = doc.CreateElement("Student");
+
+            //    XmlNode FirstName = doc.CreateElement("FirstName");
+            //    XmlNode LastName = doc.CreateElement("LastName");
+            //    XmlNode BirthDay = doc.CreateElement("BirthDay");
+
+            //    XmlNode StudentCard = doc.CreateElement("StudentCard");
+            //    XmlNode Series = doc.CreateElement("Series");
+            //    XmlNode Number = doc.CreateElement("Number");
+
+            //    XmlNode textFirstName = doc.CreateTextNode(student.FirstName);
+            //    XmlNode textLastName = doc.CreateTextNode(student.LastName);
+            //    XmlNode textBirthDay = doc.CreateTextNode(student.BirthDay.ToShortDateString());
+
+            //    XmlNode textSeries = doc.CreateTextNode(student.StudentCard.Series);
+            //    XmlNode textNumber = doc.CreateTextNode(student.StudentCard.Number.ToString());
+
+            //    FirstName.AppendChild(textFirstName);
+            //    LastName.AppendChild(textLastName);
+            //    BirthDay.AppendChild(textBirthDay);
+            //    StudentCard.AppendChild(textSeries);
+            //    Series.AppendChild(textSeries);
+            //    Number.AppendChild(textNumber);
+
+            //    StudentCard.AppendChild(Series);
+            //    StudentCard.AppendChild(Number);
+
+            //    st.AppendChild(FirstName);
+            //    st.AppendChild(LastName);
+            //    st.AppendChild(BirthDay);
+            //    st.AppendChild(StudentCard);
+
+            //    root.AppendChild(st);
+            //}
+
+            //doc.AppendChild(root);
+            //doc.Save("../../SavingDocuments/Student.xml");
+
+            //PrintNode(doc);
+            //-------------------------------------------------------------------------------ЗАПИСЬ СТУДЕНТОВ ^
+
+            //-------------------------------------------------------------------------------СЧИТЫВАНИЕ СТУДЕНТОВ
+            //List<GoToCSharpStud.Student> students = new List<GoToCSharpStud.Student>();
+
+            //XmlTextReader reader = new XmlTextReader("../../SavingDocuments/Student.xml");
+            //reader.WhitespaceHandling = WhitespaceHandling.None; //НЕУЧИТЫВАЕМ ПРОБЕЛЫ, ОТСТУПЫ 
+
+            //while (reader.Read()) //Пока читает
+            //{
+            //    Console.WriteLine($"Type: {reader.NodeType} | Name: {reader.Name} | Value: {reader.Value}");
+            //    if (reader.AttributeCount >= 0)
+            //    {
+            //        while (reader.MoveToNextAttribute())
+            //        {
+            //            Console.WriteLine($"Type: {reader.NodeType} | Name: {reader.Name} | Value: {reader.Value}");
+            //        }
+            //    }
+            //}
+            //reader.Close();
+            //-------------------------------------------------------------------------------СЧИТЫВАНИЕ СТУДЕНТОВ ^
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange");
+
+            XmlNodeList l1 = doc.GetElementsByTagName("cc");
+            XmlNodeList l2 = doc.GetElementsByTagName("txt");
+            XmlNodeList l3 = doc.GetElementsByTagName("rate");
+
+            List<Currency> currency = new List<Currency>();
+            for (int i = 0; i < l1.Count; i++)
+            {
+                currency.Add(new Currency { CodeNBU = l1[i].InnerText, Name = l2[i].InnerText, Rate = float.Parse(l3[i].InnerText.Replace('.', ',')) });
+                //Console.WriteLine(currency[i]);
+            }
+
+            currency.Sort((c1, c2) => c1.Name.CompareTo(c2.Name));
+            Console.WriteLine("--------------------------------------------------------------------");
+            foreach (var currency1 in currency)
+            {
+                Console.WriteLine(currency1);
+            }
+
+
+            //List<Currency> currencyMax = currency.Where(c => c.Rate > 10).ToList();
+            //Console.WriteLine("--------------------------------------------------------------------");
+            //foreach (var currency1 in currencyMax)
+            //{
+            //    Console.WriteLine(currency1);
+            //}
+
+
+
+
+
+            //XmlDocument doc = new XmlDocument();
+            //doc.Load("../../SavingDocuments/Comp.xml");
+            //PrintNode(doc.DocumentElement);
+
+            //XmlNode root = doc.DocumentElement;
+            //root.RemoveChild(root.LastChild);
+
+            //XmlNode comp = doc.CreateElement("Laptop");
+
+            //XmlNode proc = doc.CreateElement("Processor");
+            //XmlNode ram = doc.CreateElement("RAM");
+            //XmlNode hdd = doc.CreateElement("HDD");
+            //XmlNode motBo = doc.CreateElement("MotherBoard");
+            //XmlNode ViCard = doc.CreateElement("VideoCard");
+
+            //XmlNode text1 = doc.CreateTextNode("amd new tyrbo");
+            //XmlNode text2 = doc.CreateTextNode("100GB");
+            //XmlNode text3 = doc.CreateTextNode("200gb");
+            //XmlNode text4 = doc.CreateTextNode("amd3043");
+            //XmlNode text5 = doc.CreateTextNode("FDfd");
+
+            //proc.AppendChild(text1);
+            //ram.AppendChild(text2);
+            //hdd.AppendChild(text3);
+            //motBo.AppendChild(text4);
+            //ViCard.AppendChild(text5);
+
+            //comp.AppendChild(proc);
+            //comp.AppendChild(ram);
+            //comp.AppendChild(hdd);
+            //comp.AppendChild(motBo);
+            //comp.AppendChild(ViCard);
+
+            //root.AppendChild(comp);
+
+            //doc.Save("../../SavingDocuments/Comp1.xml");
+
+            //XmlTextWriter writer = new XmlTextWriter("../../SavingDocuments/Comp.xml", Encoding.Unicode);
+            //writer.Formatting = Formatting.Indented;
+            //writer.WriteStartDocument();
+            //writer.WriteStartElement("Computers");
+            //writer.WriteStartElement("Computer");
+            //writer.WriteAttributeString("Type","Game");
+            //writer.WriteElementString("Proccessor", "Intel Core I10");
+            //writer.WriteElementString("RAM", "16Gb");
+            //writer.WriteElementString("HDD", "1Tb");
+            //writer.WriteElementString("MotherBoard", "MSIB460");
+            //writer.WriteElementString("VideoCard", "GTX 3060");
+            //writer.WriteEndElement();
+            //writer.WriteEndElement();
+            //writer.Close();
+        }
 
         static void Main21_10()
         {
@@ -112,33 +364,33 @@ namespace GoToCSharp
             };
 
             //BinaryFormatter bin = new BinaryFormatter();
-            //using (Stream stream = File.Create("stud.bin"))
+            //using (Stream stream = File.Create("../../SavingDocuments/stud.bin"))
             //{
             //    bin.Serialize(stream, st);
             //}
 
 
             //Student st1 = null;
-            //using (Stream stream = File.OpenRead("stud.bin"))
+            //using (Stream stream = File.OpenRead("../../SavingDocuments/stud.bin"))
             //{
             //    st1 = (Student)bin.Deserialize(stream);
             //}
             //Console.WriteLine(st1);
 
             //SoapFormatter soap = new SoapFormatter();
-            //using (Stream stream = File.Create("stud.soap"))
+            //using (Stream stream = File.Create("../../SavingDocuments/stud.soap"))
             //{
             //    soap.Serialize(stream, st);
             //}
 
             //XmlSerializer xml = new XmlSerializer(typeof(Student));
-            //using (Stream stream = File.Create("stud.xml"))
+            //using (Stream stream = File.Create("../../SavingDocuments/stud.xml"))
             //{
             //    xml.Serialize(stream, st);
             //}
 
             ////Student st1 = null;
-            ////using (Stream stream = File.OpenRead("stud.xml"))
+            ////using (Stream stream = File.OpenRead("../../SavingDocuments/stud.xml"))
             ////{
             ////    st1 = (Student)xml.Deserialize(stream);
             ////}
@@ -193,13 +445,13 @@ namespace GoToCSharp
             };
 
             SoapFormatter soap = new SoapFormatter();
-            using (Stream stream = File.Create("stud2.soap"))
+            using (Stream stream = File.Create("../../SavingDocuments/stud2.soap"))
             {
                 soap.Serialize(stream, students);
             }
 
             //List<Student> st1 = null;
-            //using (Stream stream = File.OpenRead("stud2.soap"))
+            //using (Stream stream = File.OpenRead("../../SavingDocuments/stud2.soap"))
             //{
             //    st1 = (List<Student>)soap.Deserialize(stream);
             //}

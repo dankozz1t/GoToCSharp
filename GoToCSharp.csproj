@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TaskBank\Bank.cs" />
+    <Compile Include="Currency.cs" />
     <Compile Include="DzWeek1_2 Apple\Apple.cs" />
     <Compile Include="DzWeek1_2 Apple\AppleAddSugar.cs" />
     <Compile Include="DzWeek3 House\House.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DzWeek1_1\Tank.cs" />
     <Compile Include="TaskBankrupt\Money.cs" />
+    <Compile Include="TaskBank\mainBank.cs" />
     <Compile Include="TaskCardGame\Card.cs" />
     <Compile Include="TaskCardGame\Deck.cs" />
     <Compile Include="TaskCardGame\GameCard.cs" />

@@ -9,6 +9,7 @@ using GoToCSharp;
 
 namespace GoToCSharpStud
 {
+
     [Serializable]
     public class StudentCard
     {
@@ -21,6 +22,10 @@ namespace GoToCSharpStud
         }
     }
 
+
+    /// <summary>
+    ///     
+    /// </summary>
     [Serializable]
     [Programmer]
     public class Student : IComparable<Student>, IComparable, ICloneable
@@ -62,6 +67,11 @@ namespace GoToCSharpStud
             return temp;
         }
 
+        /// <summary>
+        /// Метод сравнения двух студентов по фамилии
+        /// </summary>
+        /// <param name="obj">Это второй студент</param>
+        /// <returns>0 - Если равны. 1 - если первый больше, -1 - если второй больше</returns>
         public int CompareTo(object obj)
         {
             if (obj is Student)
