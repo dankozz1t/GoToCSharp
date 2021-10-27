@@ -4,7 +4,7 @@ namespace GoToCSharp.TaskCardGame
 {
     public class MainCardGame
     {
-        static void Main(string[] args)
+        static void MainCard(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Title = "Task Card Game";
