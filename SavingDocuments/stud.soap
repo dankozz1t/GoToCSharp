@@ -1,0 +1,14 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<SOAP-ENV:Body>
+<a1:Student id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/GoToCSharpStud/GoToCSharp%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_x003C_FirstName_x003E_k__BackingField id="ref-3">Olga</_x003C_FirstName_x003E_k__BackingField>
+<_x003C_LastName_x003E_k__BackingField id="ref-4">Dubinkina</_x003C_LastName_x003E_k__BackingField>
+<_x003C_BirthDay_x003E_k__BackingField>1988-04-13T00:00:00.0000000+03:00</_x003C_BirthDay_x003E_k__BackingField>
+<_x003C_StudentCard_x003E_k__BackingField href="#ref-5"/>
+</a1:Student>
+<a1:StudentCard id="ref-5" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/GoToCSharpStud/GoToCSharp%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_x003C_Series_x003E_k__BackingField id="ref-6">BC</_x003C_Series_x003E_k__BackingField>
+<_x003C_Number_x003E_k__BackingField>123450</_x003C_Number_x003E_k__BackingField>
+</a1:StudentCard>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
