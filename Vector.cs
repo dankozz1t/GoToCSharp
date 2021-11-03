@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
+using NLog;
 
 namespace GoToCSharp
 {
@@ -39,8 +40,9 @@ namespace GoToCSharp
     {
         public int X { get; set; }
         public int Y { get; set; }
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
-        public Vector() { }
+        public Vector() { logger.Warn("Создался вектор"); }
 
         public Vector(Point p1, Point p2)
         {

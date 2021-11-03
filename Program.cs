@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,7 @@ using System.Xml.Serialization;
 using GoToCSharp.Bank;
 using GoToCSharpStud;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 
 namespace GoToCSharp
@@ -78,12 +80,30 @@ namespace GoToCSharp
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Title = "Recording learning CSharp";
 
-            GoToCSharp.Bank.MainBank bank = new MainBank();
-            bank.mainBank();
+            Main28_10();
 
 
 
             Console.Read();
+        }
+
+
+        static void Main28_10()
+        {
+            //DLLImportLibary.MessageBoxA(IntPtr.Zero, "Нажми ок если ок", "Лучшая в мире программа", 0);
+        
+
+            //string note = "notepad.exe";
+            //string text = Console.ReadLine();
+            //Process process = Process.Start(note);
+            //process.WaitForInputIdle();
+            //IntPtr h = process.MainWindowHandle;
+            //DLLImportLibary.SetForegroundWindow(h);
+            //SendKeys.SendWait(text);
+
+            Vector v = new Vector();
+
+
         }
 
         static void Main27_10()
@@ -247,26 +267,26 @@ namespace GoToCSharp
             //}
             //reader.Close();
             //-------------------------------------------------------------------------------СЧИТЫВАНИЕ СТУДЕНТОВ ^
-            XmlDocument doc = new XmlDocument();
-            doc.Load(@"https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange");
+            //XmlDocument doc = new XmlDocument();
+            //doc.Load(@"https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange");
 
-            XmlNodeList l1 = doc.GetElementsByTagName("cc");
-            XmlNodeList l2 = doc.GetElementsByTagName("txt");
-            XmlNodeList l3 = doc.GetElementsByTagName("rate");
+            //XmlNodeList l1 = doc.GetElementsByTagName("cc");
+            //XmlNodeList l2 = doc.GetElementsByTagName("txt");
+            //XmlNodeList l3 = doc.GetElementsByTagName("rate");
 
-            List<Currency> currency = new List<Currency>();
-            for (int i = 0; i < l1.Count; i++)
-            {
-                currency.Add(new Currency { CodeNBU = l1[i].InnerText, Name = l2[i].InnerText, Rate = float.Parse(l3[i].InnerText.Replace('.', ',')) });
-                //Console.WriteLine(currency[i]);
-            }
+            //List<Currency> currency = new List<Currency>();
+            //for (int i = 0; i < l1.Count; i++)
+            //{
+            //    currency.Add(new Currency { CodeNBU = l1[i].InnerText, Name = l2[i].InnerText, Rate = float.Parse(l3[i].InnerText.Replace('.', ',')) });
+            //    //Console.WriteLine(currency[i]);
+            //}
 
-            currency.Sort((c1, c2) => c1.Name.CompareTo(c2.Name));
-            Console.WriteLine("--------------------------------------------------------------------");
-            foreach (var currency1 in currency)
-            {
-                Console.WriteLine(currency1);
-            }
+            //currency.Sort((c1, c2) => c1.Name.CompareTo(c2.Name));
+            //Console.WriteLine("--------------------------------------------------------------------");
+            //foreach (var currency1 in currency)
+            //{
+            //    Console.WriteLine(currency1);
+            //}
 
 
             //List<Currency> currencyMax = currency.Where(c => c.Rate > 10).ToList();
@@ -275,10 +295,6 @@ namespace GoToCSharp
             //{
             //    Console.WriteLine(currency1);
             //}
-
-
-
-
 
             //XmlDocument doc = new XmlDocument();
             //doc.Load("../../SavingDocuments/Comp.xml");
